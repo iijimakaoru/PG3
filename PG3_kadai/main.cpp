@@ -23,29 +23,6 @@ int Check(int result)
 
 	return 0;
 }
-// 出た目の判定
-void Result(int result, int input)
-{
-	printf("%d\n", result);
-
-	if (Check(result) == input)
-	{
-		printf("正解\n");
-	}
-	else
-	{
-		printf("不正解\n");
-	}
-
-	if (Check(result) == 1)
-	{
-		printf("出た目は偶数\n");
-	}
-	else
-	{
-		printf("出た目は奇数\n");
-	}
-}
 
 int main()
 {
@@ -68,12 +45,21 @@ int main()
 	printf("出た目は・・・\n");
 
 	// ジャッジメント
-	std::function<void()> judge = [=]() {Result(ans, input); };
+	std::function<void()> judge = [=]() 
+	{
+		printf("%d\n", ans), // 出た目の表示
+		Check(ans) == 1 ? printf("偶数\n") : printf("奇数\n"), // 偶数か奇数か表示
+		Check(ans) == input ? printf("正解\n") : printf("不正解\n"); // 正解か不正解か表示
+	};
 
 	// もったいぶる関数
-	std::function<void(std::function<void()>, int)> setTimeOut = [](std::function<void()> judge, int time) { Sleep(time * 1000), judge(); };
+	std::function<void(std::function<void()>, int)> setTimeOut = [](std::function<void()> judge, int time) 
+	{ 
+		printf("%d秒後に答え\n",time), // 秒数表示
+			Sleep(time * 1000), // time秒待つ
+			judge(); // judge関数
+	};
 	
-	// 3秒待つ
 	setTimeOut(judge, 3);
 
 	return 0;
