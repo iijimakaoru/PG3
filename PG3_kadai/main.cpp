@@ -67,14 +67,14 @@ int main()
 	}
 	printf("出た目は・・・\n");
 
-	// もったいぶる関数
-	std::function<void(std::function<void()>, int)> time = [](std::function<void()> hoge, int time) { Sleep(time * 1000), hoge(); };
-
 	// ジャッジメント
-	std::function<void()> result = [=]() {Result(ans, input); };
+	std::function<void()> judge = [=]() {Result(ans, input); };
+
+	// もったいぶる関数
+	std::function<void(std::function<void()>, int)> setTimeOut = [](std::function<void()> judge, int time) { Sleep(time * 1000), judge(); };
 	
 	// 3秒待つ
-	time(result, 3);
+	setTimeOut(judge, 3);
 
 	return 0;
 }
