@@ -3,64 +3,58 @@
 #include <time.h>
 #include <stdlib.h>
 #include <functional>
+#include <list>
+#include <string>
 
-// サイコロ
-int GetRand()
+typedef struct CELL
 {
-	srand(time(nullptr));
-	int a = rand() % 6 + 1;
-	int b = rand() % 6 + 1;
+	char str[8];
+	struct CELL* next;
+};
 
-	return a + b;
-}
-// 奇数か偶数かの判定
-int Check(int result)
+void Create(CELL* farst, const char* buf)
 {
-	if (result % 2 == 0)
+	CELL* cell;
+	// 
+	cell = (CELL*)malloc(sizeof(CELL));
+	strcpy_s(cell->str, 8, buf);
+
+	//cell->val = val;
+	cell->next = nullptr;
+
+	// 
+	// 
+	while (farst->next != nullptr)
 	{
-		return 1;
+		farst = farst->next;
 	}
 
-	return 0;
+	farst->next = cell;
+}
+
+void Index(CELL* farst)
+{
+	while (farst->next != nullptr)
+	{
+		farst = farst->next;
+		printf("%s\n", farst->str);
+	}
 }
 
 int main()
 {
-	int ans = GetRand();
+	char str[8];
+	CELL head;
+	head.next = nullptr;
 
-	int input = -114514;
-
-	printf("奇数(0)か偶数(1)か入力してください\n");
-	// ループ
-	while (input != 0 && input != 1)
+	while (true)
 	{
-		// 入力
-		scanf_s("%d", &input);
+		scanf_s("%s", str, 8);
 
-		if (input != 0 && input != 1)
-		{
-			printf("奇数(0)か偶数(1)か入力してください\n");
-		}
+		Create(&head, str);
+
+		Index(&head);
 	}
-	printf("出た目は・・・\n");
-
-	// ジャッジメント
-	std::function<void()> judge = [=]() 
-	{
-		printf("%d\n", ans), // 出た目の表示
-		Check(ans) == 1 ? printf("偶数\n") : printf("奇数\n"), // 偶数か奇数か表示
-		Check(ans) == input ? printf("正解\n") : printf("不正解\n"); // 正解か不正解か表示
-	};
-
-	// もったいぶる関数
-	std::function<void(std::function<void()>, int)> setTimeOut = [](std::function<void()> judge, int time) 
-	{ 
-		printf("%d秒後に答え\n",time), // 秒数表示
-			Sleep(time * 1000), // time秒待つ
-			judge(); // judge関数
-	};
-	
-	setTimeOut(judge, 3);
 
 	return 0;
 }
