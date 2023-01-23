@@ -4,6 +4,15 @@
 
 using namespace std;
 
+void PrintStationName(list<const char*>& list)
+{
+	for (auto itr = list.begin(); itr != list.end(); ++itr)
+	{
+		cout << *itr << "\n";
+	}
+	printf("\n");
+}
+
 int main()
 {
 	// 山手線
@@ -41,31 +50,19 @@ int main()
 
 	// 1970
 	printf("1970年\n");
-	for (auto itr = stationNames.begin(); itr != stationNames.end(); ++itr)
-	{
-		cout << *itr << "\n";
-	}
-	printf("\n");
+	PrintStationName(stationNames);
 
 	// 2019
 	printf("2019年\n");
 	list<const char*>::iterator stationNames1970 = next(stationNames.begin(), 7);
 	stationNames.insert(stationNames1970, "Nishi-Nippori");
-	for (auto itr = stationNames.begin(); itr != stationNames.end(); ++itr)
-	{
-		cout << *itr << "\n";
-	}
-	printf("\n");
+	PrintStationName(stationNames);
 
 	// 2022
 	printf("2022年\n");
 	list<const char*>::iterator stationNames2019 = next(stationNames.begin(), 25);
 	stationNames.insert(stationNames2019, "TakanawaGateWay");
-	for (auto itr = stationNames.begin(); itr != stationNames.end(); ++itr)
-	{
-		cout << *itr << "\n";
-	}
-	printf("\n");
+	PrintStationName(stationNames);
 
 	return 0;
 }
