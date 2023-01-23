@@ -7,7 +7,7 @@ using namespace std;
 int main()
 {
 	// 山手線
-	list<const char*> name
+	list<const char*> stationName
 	{
 		"Tokyo",
 		"Kanda",
@@ -41,7 +41,7 @@ int main()
 
 	// 1970
 	printf("1970年\n");
-	for (auto itr = name.begin(); itr != name.end(); ++itr)
+	for (auto itr = stationName.begin(); itr != stationName.end(); ++itr)
 	{
 		cout << *itr << "\n";
 	}
@@ -49,9 +49,9 @@ int main()
 
 	// 2019
 	printf("2019年\n");
-	list<const char*>::iterator name1970 = next(name.begin(), 7);
-	name.insert(name1970, "Nishi-Nippori");
-	for (auto itr = name.begin(); itr != name.end(); ++itr)
+	list<const char*>::iterator name1970 = next(stationName.begin(), 7);
+	stationName.insert(name1970, "Nishi-Nippori");
+	for (auto itr = stationName.begin(); itr != stationName.end(); ++itr)
 	{
 		cout << *itr << "\n";
 	}
@@ -59,9 +59,9 @@ int main()
 
 	// 2022
 	printf("2022年\n");
-	list<const char*>::iterator name2019 = next(name.begin(), 25);
-	name.insert(name2019, "TakanawaGateWay");
-	for (auto itr = name.begin(); itr != name.end(); ++itr)
+	list<const char*>::iterator name2019 = next(stationName.begin(), 25);
+	stationName.insert(name2019, "TakanawaGateWay");
+	for (auto itr = stationName.begin(); itr != stationName.end(); ++itr)
 	{
 		cout << *itr << "\n";
 	}
