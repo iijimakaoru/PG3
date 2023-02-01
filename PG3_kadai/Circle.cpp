@@ -1,0 +1,11 @@
+#include "Circle.h"
+
+void Circle::Size()
+{
+	result = r * r * pi;
+}
+
+void Circle::Draw()
+{
+	printf("îºåa%0.1fcmÇÃâ~ÇÃñ êœÇÕ%fcm^2\n", r, result);
+}
