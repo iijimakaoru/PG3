@@ -10,23 +10,16 @@ int main()
 {
 	SceneManager* sceneMan = SceneManager::GetInstance();
 
-	int input = -1;
-	printf("1 = Title,2 = NewGame,3 = GamePlay,4 = GameClear\n");
-
-	while (input != 0)
+	while (true)
 	{
-		input = -1;
-		while (input > 4 || input < 1)
+		if (sceneMan->GetScene() + 1 > sceneMan->maxScene)
 		{
-			scanf_s("%d", &input);
-
-			if (input > 4 || input < 1)
-			{
-				printf("1`4‚ğ“ü—Í‚µ‚Ä‚­‚¾‚³‚¢B\n");
-			}
+			sceneMan->ChangeScene(0);
 		}
-
-		sceneMan->ChangeScene(input);
+		else
+		{
+			sceneMan->ChangeScene(sceneMan->GetScene() + 1);
+		}
 
 		sceneMan->Draw();
 	}

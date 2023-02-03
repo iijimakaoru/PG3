@@ -8,24 +8,28 @@ SceneManager* SceneManager::GetInstance()
 
 void SceneManager::ChangeScene(int sceneNo)
 {
+    if (scene > maxScene)
+    {
+        scene = -1;
+    }
     scene = sceneNo;
 }
 
 void SceneManager::Draw()
 {
-    if (scene == 1)
+    if (scene == 0)
     {
         printf("TitleScene\n");
     }
-    else if (scene == 2)
+    else if (scene == 1)
     {
         printf("NewGameScene\n");
     }
-    else if (scene == 3)
+    else if (scene == 2)
     {
         printf("GamePlayScene\n");
     }
-    else if (scene == 4)
+    else if (scene == 3)
     {
         printf("GameClearScene\n");
     }
