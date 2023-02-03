@@ -2,70 +2,31 @@
 #include <vector>
 #include <list>
 
+#include "Enemy.h"
+
 using namespace std;
+
+int Enemy::enemyCount;
 
 int main()
 {
-	// Rèü
-	list<const char*> name
-	{
-		"Tokyo",
-		"Kanda",
-		"Akihabara",
-		"Okachimachi",
-		"Ueno",
-		"Uguisudani",
-		"Nippori",
-		"Tabata",
-		"Komagome",
-		"Sugamo",
-		"Otuka",
-		"Ikebukuro",
-		"Mejiro",
-		"Takadanohara",
-		"Shin-Okubo",
-		"Shinjuku",
-		"Yoyogi",
-		"Harajuku",
-		"Shibuya",
-		"Ebisu",
-		"Meguro",
-		"Gotanda",
-		"Osaki",
-		"Shinagawa",
-		"Tamachi",
-		"Hamamatutsucho",
-		"Shimbasi",
-		"Yurakucho"
-	};
+	Enemy* enemy1 = new Enemy;
+	Enemy* enemy2 = new Enemy;
+	Enemy* enemy3 = new Enemy;
 
-	// 1970
-	printf("1970”N\n");
-	for (auto itr = name.begin(); itr != name.end(); ++itr)
+	int input = 0;
+	printf("‚Ç‚ê‚ğUŒ‚‚·‚éH\n");
+	while (input < 1 || input > 3)
 	{
-		cout << *itr << "\n";
+		scanf_s("%d", &input);
 	}
-	printf("\n");
+	printf("“G%d‚ÖUŒ‚I\n",input);
 
-	// 2019
-	printf("2019”N\n");
-	list<const char*>::iterator name1970 = next(name.begin(), 7);
-	name.insert(name1970, "Nishi-Nippori");
-	for (auto itr = name.begin(); itr != name.end(); ++itr)
-	{
-		cout << *itr << "\n";
-	}
-	printf("\n");
-
-	// 2022
-	printf("2022”N\n");
-	list<const char*>::iterator name2019 = next(name.begin(), 25);
-	name.insert(name2019, "TakanawaGateWay");
-	for (auto itr = name.begin(); itr != name.end(); ++itr)
-	{
-		cout << *itr << "\n";
-	}
-	printf("\n");
+	printf("“G%d‚Í”š”­‚µ‚½I\n", input);
+	printf("”š”­‚Í‚·‚×‚Ä‚Ì“G‚ğŠª‚«‚ñ‚¾I\n");
+	delete enemy1;
+	delete enemy2;
+	delete enemy3;
 
 	return 0;
 }
