@@ -2,70 +2,30 @@
 #include <vector>
 #include <list>
 
+#include "SceneManager.h"
+
 using namespace std;
 
 int main()
 {
-	// 山手線
-	list<const char*> name
-	{
-		"Tokyo",
-		"Kanda",
-		"Akihabara",
-		"Okachimachi",
-		"Ueno",
-		"Uguisudani",
-		"Nippori",
-		"Tabata",
-		"Komagome",
-		"Sugamo",
-		"Otuka",
-		"Ikebukuro",
-		"Mejiro",
-		"Takadanohara",
-		"Shin-Okubo",
-		"Shinjuku",
-		"Yoyogi",
-		"Harajuku",
-		"Shibuya",
-		"Ebisu",
-		"Meguro",
-		"Gotanda",
-		"Osaki",
-		"Shinagawa",
-		"Tamachi",
-		"Hamamatutsucho",
-		"Shimbasi",
-		"Yurakucho"
-	};
+	SceneManager* sceneMan = SceneManager::GetInstance();
 
-	// 1970
-	printf("1970年\n");
-	for (auto itr = name.begin(); itr != name.end(); ++itr)
-	{
-		cout << *itr << "\n";
-	}
-	printf("\n");
+	int input = -1;
 
-	// 2019
-	printf("2019年\n");
-	list<const char*>::iterator name1970 = next(name.begin(), 7);
-	name.insert(name1970, "Nishi-Nippori");
-	for (auto itr = name.begin(); itr != name.end(); ++itr)
+	printf("0 = Title,1 = NewGame,2 = GamePlay,3 = GameClear\n");
+	while (input > 3 || input < 0)
 	{
-		cout << *itr << "\n";
-	}
-	printf("\n");
+		scanf_s("%d", &input);
 
-	// 2022
-	printf("2022年\n");
-	list<const char*>::iterator name2019 = next(name.begin(), 25);
-	name.insert(name2019, "TakanawaGateWay");
-	for (auto itr = name.begin(); itr != name.end(); ++itr)
-	{
-		cout << *itr << "\n";
+		if (input > 3 || input < 0)
+		{
+			printf("0～3を入力してください。\n");
+		}
 	}
-	printf("\n");
+
+	sceneMan->ChangeScene(input);
+
+	sceneMan->Draw();
 
 	return 0;
 }
