@@ -12,6 +12,9 @@ int main()
 
 	while (true)
 	{
+		sceneMan->Draw();
+
+		std::cin.get();
 		if (sceneMan->GetScene() + 1 > sceneMan->maxScene)
 		{
 			sceneMan->ChangeScene(0);
@@ -20,8 +23,6 @@ int main()
 		{
 			sceneMan->ChangeScene(sceneMan->GetScene() + 1);
 		}
-
-		sceneMan->Draw();
 	}
 
 	return 0;
