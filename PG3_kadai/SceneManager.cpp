@@ -13,19 +13,19 @@ void SceneManager::ChangeScene(int sceneNo)
 
 void SceneManager::Draw()
 {
-    if (scene == 0)
+    if (scene == 1)
     {
         printf("TitleScene\n");
     }
-    else if (scene == 1)
+    else if (scene == 2)
     {
         printf("NewGameScene\n");
     }
-    else if (scene == 2)
+    else if (scene == 3)
     {
         printf("GamePlayScene\n");
     }
-    else if (scene == 3)
+    else if (scene == 4)
     {
         printf("GameClearScene\n");
     }
