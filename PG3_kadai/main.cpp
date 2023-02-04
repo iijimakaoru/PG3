@@ -30,14 +30,14 @@ int main()
 		printf("‚Ç‚ê‚ğUŒ‚‚·‚éH\n");
 
 		scanf_s("%d", &input);
+
+		printf("“G%d‚ÖUŒ‚I\n", input);
 		
 		switch (input)
 		{
 		case 1:
 			if (enemy1.GetIsAlive())
 			{
-				printf("“G%d‚ÖUŒ‚I\n", input);
-
 				printf("“G%d‚Í”š”­‚µ‚½I\n", input);
 
 				enemy1.Death();
@@ -50,8 +50,6 @@ int main()
 		case 2:
 			if (enemy2.GetIsAlive())
 			{
-				printf("“G%d‚ÖUŒ‚I\n", input);
-
 				printf("“G%d‚Í”š”­‚µ‚½I\n", input);
 
 				enemy2.Death();
@@ -64,8 +62,6 @@ int main()
 		case 3:
 			if (enemy3.GetIsAlive())
 			{
-				printf("“G%d‚ÖUŒ‚I\n", input);
-
 				printf("“G%d‚Í”š”­‚µ‚½I\n", input);
 
 				enemy3.Death();
