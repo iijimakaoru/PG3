@@ -35,7 +35,7 @@ public:
 	void CorpseKick()
 	{
 		printf("“G%d‚Í“|‚ê‚Ä‚¢‚é\n",enemyNum);
-		printf("€‘ÌR‚è‚Í‹S’{‚ÌŠ‹Æ‚Å‚ ‚éI\n",enemyNum);
+		printf("€‘ÌR‚è‚Í‹S’{‚ÌŠ‹Æ‚Å‚ ‚éI\n");
 	}
 
 	void Melee()
