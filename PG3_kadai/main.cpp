@@ -21,7 +21,7 @@ int main()
 
 		int input = -1;
 
-		if (!enemy1.GetIsAlive(), !enemy2.GetIsAlive(), !enemy3.GetIsAlive())
+		if (!enemy1.GetIsAlive() && !enemy2.GetIsAlive() && !enemy3.GetIsAlive())
 		{
 			printf("‚ ‚È‚½‚ÍŸ—˜‚µ‚½I\n");
 			break;
@@ -38,8 +38,6 @@ int main()
 		case 1:
 			if (enemy1.GetIsAlive())
 			{
-				printf("“G%d‚Í”š”­‚µ‚½I\n", input);
-
 				enemy1.Death();
 			}
 			else
@@ -50,8 +48,6 @@ int main()
 		case 2:
 			if (enemy2.GetIsAlive())
 			{
-				printf("“G%d‚Í”š”­‚µ‚½I\n", input);
-
 				enemy2.Death();
 			}
 			else
@@ -62,8 +58,6 @@ int main()
 		case 3:
 			if (enemy3.GetIsAlive())
 			{
-				printf("“G%d‚Í”š”­‚µ‚½I\n", input);
-
 				enemy3.Death();
 			}
 			else
@@ -72,6 +66,7 @@ int main()
 			}
 			break;
 		default:
+			printf("‚»‚ñ‚È“G‚Í‘¶İ‚µ‚È‚¢I\n");
 			break;
 		}
 	}

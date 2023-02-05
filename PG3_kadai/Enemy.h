@@ -28,6 +28,7 @@ public:
 
 	void Death()
 	{
+		printf("“G%d‚Í”š”­‚µ‚½I\n", enemyNum);
 		printf("“G%d‚Í“|‚ê‚½I\n", enemyNum);
 		isAlive = false;
 	}
