@@ -1,17 +1,23 @@
 #include "Enemy.h"
 
+void (Enemy::* Enemy::actionFunc[])() =
+{
+	&Enemy::Melee,
+	&Enemy::Range,
+	&Enemy::Escape
+};
+
 Enemy::Enemy(int enemy)
 {
 	enemyNum = enemy;
 	printf("“G%d‚ªŒ»‚ê‚½\n", enemyNum);
-	actionFunc = &Enemy::Melee;
 }
 
 void Enemy::Update()
 {
 	if (isAlive)
 	{
-		(this->*actionFunc)();
+		(this->*actionFunc[static_cast<size_t>(phase)])();
 	}
 }
 
@@ -30,17 +36,17 @@ void Enemy::CorpseKick()
 void Enemy::Melee()
 {
 	printf("“G%d‚Í‹ßÚUŒ‚‚ğŒJ‚èo‚µ‚½I\n", enemyNum);
-	actionFunc = &Enemy::Range;
+	phase = 1;
 }
 
 void Enemy::Range()
 {
 	printf("“G%d‚Í‰“‹——£UŒ‚‚ğŒJ‚èo‚µ‚½I\n", enemyNum);
-	actionFunc = &Enemy::Escape;
+	phase = 2;
 }
 
 void Enemy::Escape()
 {
 	printf("“G%d‚Í“¦‘–‚ğŒJ‚èo‚µ‚½I\n", enemyNum);
-	actionFunc = &Enemy::Melee;
+	phase = 0;
 }

@@ -6,7 +6,7 @@ class Enemy
 {
 public:
 	// 行動テーブル
-	void(Enemy::* actionFunc)();
+	static void(Enemy::* actionFunc[])();
 
 	// 登場文(初期化)
 	Enemy(int enemy);
@@ -36,4 +36,6 @@ public:
 private:
 	bool isAlive = true;
 	int enemyNum = 0;
+
+	int phase = 0;
 };
