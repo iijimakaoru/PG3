@@ -5,62 +5,33 @@
 class Enemy
 {
 public:
+	// s“®ƒe[ƒuƒ‹
 	void(Enemy::* actionFunc)();
 
-	Enemy(int enemy) 
-	{  
-		enemyNum = enemy;
-		printf("“G%d‚ªŒ»‚ê‚½\n", enemyNum);
-		actionFunc = &Enemy::Melee;
-	}
-	~Enemy() 
-	{ 
-		
-	}
+	// “oê•¶(‰Šú‰»)
+	Enemy(int enemy);
+	~Enemy() {}
 
-	void Update()
-	{
-		if (isAlive)
-		{
-			(this->*actionFunc)();
-		}
-	}
+	// s“®
+	void Update();
 
-	void Death()
-	{
-		printf("“G%d‚Í”š”­‚µ‚½I\n", enemyNum);
-		printf("“G%d‚Í“|‚ê‚½I\n", enemyNum);
-		isAlive = false;
-	}
+	// €–S•¶
+	void Death();
 
-	void CorpseKick()
-	{
-		printf("“G%d‚Í“|‚ê‚Ä‚¢‚é\n",enemyNum);
-		printf("€‘ÌR‚è‚Í‹S’{‚ÌŠ‹Æ‚Å‚ ‚éI\n");
-	}
+	// €‚ñ‚Å‚é“G‚ğUŒ‚‚µ‚½‚Æ‚«
+	void CorpseKick();
 
-	void Melee()
-	{
-		printf("“G%d‚Í‹ßÚUŒ‚‚ğŒJ‚èo‚µ‚½I\n",enemyNum);
-		actionFunc = &Enemy::Range;
-	}
+	// ‹ßÚUŒ‚
+	void Melee();
 
-	void Range()
-	{
-		printf("“G%d‚Í‰“‹——£UŒ‚‚ğŒJ‚èo‚µ‚½I\n",enemyNum);
-		actionFunc = &Enemy::Escape;
-	}
+	// ‰“‹——£UŒ‚
+	void Range();
 
-	void Escape()
-	{
-		printf("“G%d‚Í“¦‘–‚ğŒJ‚èo‚µ‚½I\n", enemyNum);
-		actionFunc = &Enemy::Melee;
-	}
+	// “¦‚°‚é
+	void Escape();
 
-	bool GetIsAlive()
-	{
-		return isAlive;
-	}
+	// ¶‘¶ƒtƒ‰ƒO
+	bool GetIsAlive() { return isAlive; }
 
 private:
 	bool isAlive = true;
