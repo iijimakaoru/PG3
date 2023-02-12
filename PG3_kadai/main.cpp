@@ -2,70 +2,75 @@
 #include <vector>
 #include <list>
 
+#include "TaskManager.h"
+#include "PICManager.h"
+
 using namespace std;
 
 int main()
 {
-	// 山手線
-	list<const char*> name
-	{
-		"Tokyo",
-		"Kanda",
-		"Akihabara",
-		"Okachimachi",
-		"Ueno",
-		"Uguisudani",
-		"Nippori",
-		"Tabata",
-		"Komagome",
-		"Sugamo",
-		"Otuka",
-		"Ikebukuro",
-		"Mejiro",
-		"Takadanohara",
-		"Shin-Okubo",
-		"Shinjuku",
-		"Yoyogi",
-		"Harajuku",
-		"Shibuya",
-		"Ebisu",
-		"Meguro",
-		"Gotanda",
-		"Osaki",
-		"Shinagawa",
-		"Tamachi",
-		"Hamamatutsucho",
-		"Shimbasi",
-		"Yurakucho"
-	};
+	PICManager* picMan = PICManager::GetInstance();
+	TaskManager* taskMan = TaskManager::GetInstance();
 
-	// 1970
-	printf("1970年\n");
-	for (auto itr = name.begin(); itr != name.end(); ++itr)
+	while (true)
 	{
-		cout << *itr << "\n";
-	}
-	printf("\n");
+		int select = -1;
 
-	// 2019
-	printf("2019年\n");
-	list<const char*>::iterator name1970 = next(name.begin(), 7);
-	name.insert(name1970, "Nishi-Nippori");
-	for (auto itr = name.begin(); itr != name.end(); ++itr)
-	{
-		cout << *itr << "\n";
-	}
-	printf("\n");
+		// 現在登録されているやつ
+		picMan->AllPic();
+		taskMan->AllTask();
+		cout << "----" << endl;
 
-	// 2022
-	printf("2022年\n");
-	list<const char*>::iterator name2019 = next(name.begin(), 25);
-	name.insert(name2019, "TakanawaGateWay");
-	for (auto itr = name.begin(); itr != name.end(); ++itr)
-	{
-		cout << *itr << "\n";
+		// 担当者orタスク
+		cout << "1:担当者操作" << "\n" << "2:タスク操作" << "\n" << endl;
+		cin >> select;
+		if (select == 1)
+		{
+			cout << "1:担当者追加,2:名前変更,3:クラス変更,その他:担当者削除" << "\n" << endl;
+			cin >> select;
+			if (select == 1)
+			{
+				picMan->CreatePic();
+			}
+			else if (select == 2)
+			{
+				picMan->ChangeName();
+			}
+			else if (select == 3)
+			{
+				picMan->ChangeClass();
+			}
+			else
+			{
+				picMan->DeletePicSelect();
+			}
+		}
+		else if (select == 2)
+		{
+			cout << "1:タスク作成,2:締切日変更,3:状態変更,4:タスクの削除" << endl;
+			cin >> select;
+			if (select == 1)
+			{
+				taskMan->CreateTask();
+			}
+			else if (select == 2)
+			{
+				taskMan->ChangeDeadLine();
+			}
+			else if (select == 3)
+			{
+				taskMan->ChangeState();
+			}
+			else
+			{
+				taskMan->DeleteTaskSelect();
+			}
+		}
+
+		cout << "========" << "\n" << endl;
 	}
-	printf("\n");
+
+	system("pause");
 
 	return 0;
 }
